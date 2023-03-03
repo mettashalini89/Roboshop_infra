@@ -13,7 +13,7 @@ resource "aws_instance" "ec2"{  #first lable is from terraform and second lable 
   }
 }
 
-resource "null_resource" "provisioner" {
+resource "null_resource" "provisioner" {      #Give provisioner saperately so it dnt destroy the resource creation
 
   provisioner "remote-exec" {
     connection {
@@ -25,7 +25,7 @@ resource "null_resource" "provisioner" {
     inline = [
       "git clone https://github.com/mettashalini89/Roboshop-scripting",
       "cd Robshop-scripting",
-      "sudo bash ${var.component}.bash"
+      "sudo bash ${var.component}.sh ${var.password}"
 
     ]
 
@@ -72,4 +72,4 @@ variable "instance_type" {}
 variable "env" {
   default = "dev"
 }
-
+variable "password" {}
