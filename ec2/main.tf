@@ -7,14 +7,17 @@ data "aws_ami" "ami" {
 resource "aws_instance" "ec2"{  #first lable is from terraform and second lable is any can be given by user for his ref
   ami = "ami-0a017d8ceb274537d"
   instance_type = var.instance_type
-  vpc_security_group_ids = [var.sq_id]
+  vpc_security_group_ids = [aws_security_group.sq.id]
   tags = {
     Name = var.component
   }
+}
+
+resource "null_resource" "provisioner" {
 
   provisioner "remote-exec" {
     connection {
-      host = self.public_ip
+      host = aws_instance.ec2.public_ip
       user = "centos"
       password = "DevOps321"
     }
@@ -27,6 +30,7 @@ resource "aws_instance" "ec2"{  #first lable is from terraform and second lable 
     ]
 
   }
+
 }
 
 resource "aws_route53_record" "record" {
