@@ -3,4 +3,5 @@ module "ec2" {
   source = "./ec2"
   component = each.value["name"]
   instance_type = each.value["type"]
+   #added sq module output as input tp ec2 module
 }

@@ -56,11 +56,9 @@ resource "aws_security_group" "sq" {
 
 variable "component" {}
 variable "instance_type" {}
-variable "sq_id"{}
+
 variable "env" {
   default = "dev"
 }
 
-output "private_ip"{
-  value = aws_instance.ec2.private_ip
-}
+o
