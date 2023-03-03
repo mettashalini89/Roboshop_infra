@@ -56,7 +56,7 @@ resource "aws_security_group" "sq" {
 
 variable "component" {}
 variable "instance_type" {}
-
+variable "sq_id"{}
 variable "env" {
   default = "dev"
 }
