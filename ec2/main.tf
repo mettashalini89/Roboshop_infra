@@ -68,7 +68,7 @@ resource "aws_security_group" "sq" {
 
 variable "component" {}
 variable "instance_type" {}
-variable "private_ip" {}
+
 variable "env" {
   default = "dev"
 }
