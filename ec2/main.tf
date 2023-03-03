@@ -29,6 +29,14 @@ resource "aws_instance" "ec2"{  #first lable is from terraform and second lable 
   }
 }
 
+resource "aws_route53_record" "record" {
+  zone_id = "Z02543141QBSJJNNYEJL"
+  name    = "${var.component}-dev.devopsb71.live"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.ec2.private_ip]
+}
+
 resource "aws_security_group" "sq" {
   name        = "${var.component}-${var.env}-sq"
   description = "Allow TLS inbound traffic"
@@ -56,7 +64,7 @@ resource "aws_security_group" "sq" {
 
 variable "component" {}
 variable "instance_type" {}
-variable "sq_id"{}
+variable "private_ip" {}
 variable "env" {
   default = "dev"
 }
