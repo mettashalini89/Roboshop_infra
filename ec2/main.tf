@@ -1,7 +1,9 @@
+data "aws_caller_identity" "current" {}
+
 data "aws_ami" "ami" {
   most_recent      = true
-  name_regex       = "Centos-8-DevOps-Practice"
-  owners           = ["973714476881"]
+  name_regex       = "devops-practice-with-ansible"
+  owners           = [data.aws_caller_identity.current.account_id]
 }
 
 resource "aws_instance" "ec2"{  #first lable is from terraform and second lable is any can be given by user for his ref
@@ -23,22 +25,12 @@ resource "null_resource" "provisioner" {      #Give provisioner saperately so it
     }
 
     inline = [
-      "git clone https://github.com/mettashalini89/Roboshop-scripting.git",
-      "cd Roboshop-scripting",
-      "sudo bash ${var.component}.sh ${var.password}"
+      "ansible-pull -i localhost, -u https://github.com/mettashalini89/roboshop-ansible roboshop.yml -e role_name=${var.component}"
 
     ]
 
   }
 
-}
-
-resource "aws_route53_record" "record" {
-  zone_id = "Z02543141QBSJJNNYEJL"
-  name    = "${var.component}-dev.devopsb71.live"
-  type    = "A"
-  ttl     = 30
-  records = [aws_instance.ec2.private_ip]
 }
 
 resource "aws_security_group" "sq" {
@@ -64,6 +56,14 @@ resource "aws_security_group" "sq" {
   tags = {
     Name = "${var.component}-${var.env}-sq"
   }
+}
+
+resource "aws_route53_record" "record" {
+  zone_id = "Z02543141QBSJJNNYEJL"
+  name    = "${var.component}-dev.devopsb71.live"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.ec2.private_ip]
 }
 
 variable "component" {}
