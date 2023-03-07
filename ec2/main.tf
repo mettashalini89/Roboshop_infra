@@ -24,6 +24,7 @@ resource "null_resource" "provisioner" {      #Give provisioner saperately so it
       password = "DevOps321"
     }
 
+
     inline = [
       "ansible-pull -i localhost, -u https://github.com/mettashalini89/roboshop-ansible roboshop.yml -e role_name=${var.component}"
 
@@ -72,4 +73,4 @@ variable "instance_type" {}
 variable "env" {
   default = "dev"
 }
-variable "password" {}
+
