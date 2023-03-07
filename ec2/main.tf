@@ -17,7 +17,7 @@ resource "aws_instance" "ec2"{  #first lable is from terraform and second lable 
 
 resource "null_resource" "provisioner" {      #Give provisioner saperately so it dnt destroy the resource creation
 
-  provisioner "remote-exec" {
+  provisioner "remote-exec"{
     connection {
       host = aws_instance.ec2.public_ip
       user = "centos"
@@ -31,6 +31,7 @@ resource "null_resource" "provisioner" {      #Give provisioner saperately so it
     ]
 
   }
+
 
 }
 
