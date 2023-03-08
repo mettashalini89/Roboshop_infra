@@ -9,7 +9,7 @@ data "aws_ami" "ami" {
 resource "aws_instance" "ec2"{  #first lable is from terraform and second lable is any can be given by user for his ref
   ami = data.aws_ami.ami.image_id
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.sq.id]
+  vpc_security_group_ids = [aws_security_group.sg.id]
   tags = {
     Name = var.component
   }
@@ -33,8 +33,8 @@ resource "null_resource" "provisioner" {      #Give provisioner saperately so it
 
 }
 
-resource "aws_security_group" "sq" {
-  name        = "${var.component}-${var.env}-sq"
+resource "aws_security_group" "sg" {
+  name        = "${var.component}-${var.env}-sg"
   description = "Allow TLS inbound traffic"
 
   ingress {
@@ -54,7 +54,7 @@ resource "aws_security_group" "sq" {
   }
 
   tags = {
-    Name = "${var.component}-${var.env}-sq"
+    Name = "${var.component}-${var.env}-sg"
   }
 }
 
