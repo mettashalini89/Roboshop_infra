@@ -22,5 +22,8 @@ parameters = [
   { name = "dev.dispatch.amqp_host", value = "rabbitmq-dev.devopsb71.live", type = "String" }
 ]
 
-
+## This is not best practice and not followed in companies, passwords should not keep in git repos and manual is best practice
+secrets = [
+  {name = "test", value = "8080", type = "SourceString"}
+]
 
