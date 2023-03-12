@@ -6,7 +6,7 @@ parameters = [
   { name = "dev.frontend.payment_url", value = "http://payment-dev.devopsb71.live:8080/", type = "String" },
   { name = "dev.user.mongo", value = "true", type = "String" },
   { name = "dev.user.redis_host", value = "redis-dev.devopsb71.live", type = "String" },
-  { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.devopsb71.live:27017/users", type = "String" },
+  { name = "dev.user.mongo_url", value = "mongodb://mongodb-dev.devopsb71.live:27017/catalogue", type = "String" },
   { name = "dev.shipping.cart_endpoint", value = "cart-dev.devopsb71.live:8080", type = "String" },
   { name = "dev.shipping.db_host", value = "mysql-dev.devopsb71.live", type = "String" },
   { name = "dev.payment.cart_host", value = "cart-dev.devopsb71.live", type = "String" },
@@ -15,7 +15,7 @@ parameters = [
   { name = "dev.payment.user_port", value = "8080", type = "String" },
   { name = "dev.payment.amqp_host", value = "rabbitmq-dev.devopsb71.live", type = "String" },
   { name = "dev.catalogue.mongo", value = "true", type = "String" },
-  { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.devopsb71.live:27017/catalogue", type = "String" },
+  { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.devopsb71.live:27017/users", type = "String" },
   { name = "dev.cart.redis_host", value = "redis-dev.devopsb71.live", type = "String" },
   { name = "dev.cart.catalogue_host", value = "catalogue-dev.devopsb71.live", type = "String" },
   { name = "dev.cart.catalogue_port", value = "8080", type = "String" },
@@ -24,6 +24,10 @@ parameters = [
 
 ## This is not best practice and not followed in companies, passwords should not keep in git repos and manual is best practice
 secrets = [
-  {name = "test", value = "8080", type = "SourceString"}
+  {name = "dev.mysql.password", value = "RoboShop@1", type = "SourceString"},
+  {name = "dev.payment.amqp_user", value = "roboshop", type = "SourceString"},
+  {name = "dev.payment.amqp_pass", value = "roboshop123", type = "SourceString"},
+  {name = "dev.rabbitmq.amqp_user", value = "roboshop", type = "SourceString"},
+  {name = "dev.rabbitmq.amqp_pass", value = "roboshop123", type = "SourceString"}
 ]
 
