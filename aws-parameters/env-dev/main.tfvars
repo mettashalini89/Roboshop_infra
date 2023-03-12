@@ -24,10 +24,10 @@ parameters = [
 
 ## This is not best practice and not followed in companies, passwords should not keep in git repos and manual is best practice
 secrets = [
-  {name = "dev.mysql.password", value = "RoboShop@1", type = "SourceString"},
-  {name = "dev.payment.amqp_user", value = "roboshop", type = "SourceString"},
-  {name = "dev.payment.amqp_pass", value = "roboshop123", type = "SourceString"},
-  {name = "dev.rabbitmq.amqp_user", value = "roboshop", type = "SourceString"},
-  {name = "dev.rabbitmq.amqp_pass", value = "roboshop123", type = "SourceString"}
+  {name = "dev.mysql.password", value = "RoboShop@1", type = "SecureString"},
+  {name = "dev.payment.amqp_user", value = "roboshop", type = "SecureString"},
+  {name = "dev.payment.amqp_pass", value = "roboshop123", type = "SecureString"},
+  {name = "dev.rabbitmq.amqp_user", value = "roboshop", type = "SecureString"},
+  {name = "dev.rabbitmq.amqp_pass", value = "roboshop123", type = "SecureString"}
 ]
 
