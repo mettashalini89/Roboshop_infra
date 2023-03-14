@@ -5,6 +5,7 @@ resource "aws_instance" "ec2" {  #first lable is from terraform and second lable
   iam_instance_profile = "${var.env}-${var.component}-role"
   tags = {
     Name = var.component
+    monitor = var.monitor ? "yes" : "no"
   }
 }
 
