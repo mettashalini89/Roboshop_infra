@@ -10,7 +10,7 @@ resource "aws_instance" "ec2" {  #first lable is from terraform and second lable
 }
 
 resource "null_resource" "provisioner" {      #Give provisioner saperately so it dnt destroy the resource creation
-
+  depends_on = [aws_route53_record.record] #this helps to run the provisioner once all dns records created
   provisioner "remote-exec" {
     connection {
       host = aws_instance.ec2.public_ip
