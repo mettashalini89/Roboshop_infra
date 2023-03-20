@@ -5,5 +5,5 @@ module "vpc" {
   vpc_cidr = each.value["vpc_cidr"]
   tags = var.tags
   public_subnets = each.value["public_subnets"]
-  public_subnets = each.value["private_subnets"]
+  private_subnets = each.value["private_subnets"]
 }
