@@ -4,4 +4,5 @@ module "vpc" {
   for_each = var.vpc
   vpc_cidr = each.value["vpc_cidr"]
   tags = var.tags
+  public_subnets = each.value["public_subnets"]
 }
