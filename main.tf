@@ -1,8 +1,6 @@
-module "ec2" {
-  for_each = var.instances
-  source = "./ec2"
-  component = each.value["name"]
-  instance_type = each.value["type"]
+module "vpc" {
   env = var.env
-  monitor = try(each.value["monitor"], false)
+  source = "git::https://github.com/mettashalini89/tf_module_vpc.git"
+  for_each = var.vpc
+  vpc_cidr = each.value["cidr"]
 }
