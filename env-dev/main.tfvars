@@ -6,7 +6,7 @@ vpc = {
 
     public_subnets = {
       public-az1 = {
-        name = "public"
+        name = "public-az1"
         cidr_block = "10.0.0.0/24"
         availability_zone = "us-east-1a"
       }
