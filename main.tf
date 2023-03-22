@@ -25,8 +25,10 @@ module "docdb" {
 
 }
 */
+/*
 
 output "vpc"  {
   value = local.db_subnet_ids
 }
+*/
 
