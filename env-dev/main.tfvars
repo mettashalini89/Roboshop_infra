@@ -69,14 +69,12 @@ docdb = {
   }
 }
 
-rds = {
+elasticache = {
   main = {
-    engine = "aurora-mysql"
-    backup_retention_period = 1
-    preferred_backup_window = "07:00-09:00"
-    engine_version = "5.7.mysql_aurora.2.11.1"
-    no_of_instances = 1
-    instance_class = "db.t3.small"
-
+    engine = "rds"
+    engine_version = "6.x"
+    num_cache_nodes = 1
+    node_type = "cache.t3.micro"
   }
 }
+
