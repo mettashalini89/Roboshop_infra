@@ -54,6 +54,17 @@ module "elasticache" {
 
 }
 
+module "rabbitmq" {
+  env = var.env
+  source = "git::https://github.com/mettashalini89/tf_module_rabbitmq.git"
+  subnet_ids = local.db_subnet_ids
+  for_each = var.rabbitmq
+  tags = var.tags
+
+  instance_type = each.value["instance_type"]
+
+}
+
 
 
 
