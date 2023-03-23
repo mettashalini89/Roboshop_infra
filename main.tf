@@ -10,6 +10,7 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
+/*
 
 module "docdb" {
   env = var.env
@@ -63,6 +64,21 @@ module "rabbitmq" {
   instance_type = each.value["instance_type"]
 
 }
+*/
+
+module "alb" {
+  env = var.env
+  source = "git::https://github.com/mettashalini89/tf_module_alb.git"
+  for_each = var.alb
+  tags = var.tags
+
+  name = each.value["name"]
+  subnet_name = each.value["subnet_name"]
+  internal = each.value["internal"]
+  load_balancer_type = each.value["load_balancer_type"]
+  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null )
+}
+
 
 
 
