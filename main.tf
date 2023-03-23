@@ -22,7 +22,7 @@ module "docdb" {
   preferred_backup_window = each.value["preferred_backup_window"]
   skip_final_snapshot = each.value["skip_final_snapshot"]
   subnet_ids = local.db_subnet_ids
-
+  storage_encrypted = each.value["storage_encrypted"]
 }
 
 
