@@ -69,6 +69,7 @@ module "rabbitmq" {
 module "alb" {
   env = var.env
   source = "git::https://github.com/mettashalini89/tf_module_alb.git"
+  subnet_ids = local.db_subnet_ids
   for_each = var.alb
   tags = var.tags
 
