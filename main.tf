@@ -27,6 +27,18 @@ module "docdb" {
   instance_class = each.value["instance_class"]
 }
 
+module "rds" {
+  env = var.env
+  source = "git::https://github.com/mettashalini89/tf_module_rds.git"
+  subnet_ids = local.db_subnet_ids
+  for_each = var.rds
+  tags = var.tags
+  engine = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  backup_retention_period = each.value["backup_retention_period"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+}
+
 
 
 output "vpc"  {
