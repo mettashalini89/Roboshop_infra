@@ -7,10 +7,10 @@ locals {
     public = tolist([module.vpc["main"].public_subnets["public-az1"].id, module.vpc["main"].public_subnets["public-az2"].id])
   }
   subnet_cidr = {
-    db = tolist([module.vpc["main"].private_subnets["db-az1"].cidr_bock, module.vpc["main"].private_subnets["db-az2"].cidr_bock])
-    app = tolist([module.vpc["main"].private_subnets["app-az1"].cidr_bock, module.vpc["main"].private_subnets["app-az2"].cidr_bock])
-    web = tolist([module.vpc["main"].private_subnets["web-az1"].cidr_bock, module.vpc["main"].private_subnets["web-az2"].cidr_bock])
-    public = tolist([module.vpc["main"].public_subnets["public-az1"].cidr_bock, module.vpc["main"].public_subnets["public-az2"].cidr_bock])
+    db = tolist([module.vpc["main"].private_subnets["db-az1"].cidr_block, module.vpc["main"].private_subnets["db-az2"].cidr_block])
+    app = tolist([module.vpc["main"].private_subnets["app-az1"].cidr_block, module.vpc["main"].private_subnets["app-az2"].cidr_block])
+    web = tolist([module.vpc["main"].private_subnets["web-az1"].cidr_block, module.vpc["main"].private_subnets["web-az2"].cidr_block])
+    public = tolist([module.vpc["main"].public_subnets["public-az1"].cidr_block, module.vpc["main"].public_subnets["public-az2"].cidr_block])
   }
 
   db_subnet_ids  = tolist([module.vpc["main"].private_subnets["db-az1"].id, module.vpc["main"].private_subnets["db-az2"].id])
