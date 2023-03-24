@@ -82,16 +82,16 @@ module "alb" {
 module "app" {
   env = var.env
   source = "git::https://github.com/mettashalini89/tf_module_app.git"
-
   for_each = var.apps
   tags = var.tags
-
+  vpc_id = module.vpc["main"].vpc_id
+  bastion_cidr = var.bastion_cidr
   component = each.value["component"]
   instance_type = each.value["instance_type"]
   desired_capacity = each.value["desired_capacity"]
   max_size = each.value["max_size"]
   min_size = each.value["min_size"]
-  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null )
+  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
 
 }
 
