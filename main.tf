@@ -96,6 +96,7 @@ module "app" {
   port = each.value["port"]
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   dns_domain = var.dns_domain
+  alb = each.value["alb"]
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), alb, null), dns_name, null)
 }
 
