@@ -72,7 +72,7 @@ module "alb" {
 
   for_each = var.alb
   tags = var.tags
-
+  allow_cidr = each.value["allow_cidr"]
   name = each.value["name"]
   internal = each.value["internal"]
   load_balancer_type = each.value["load_balancer_type"]
