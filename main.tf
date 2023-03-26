@@ -71,6 +71,7 @@ module "alb" {
   source = "git::https://github.com/mettashalini89/tf_module_alb.git"
 
   for_each = var.alb
+  vpc_id = module.vpc["main"].vpc_id
   tags = var.tags
   allow_cidr = each.value["allow_cidr"]
   name = each.value["name"]
