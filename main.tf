@@ -85,6 +85,7 @@ module "app" {
   source = "git::https://github.com/mettashalini89/tf_module_app.git"
   for_each = var.apps
   tags = var.tags
+  dns_domain = var.dns_domain
   vpc_id = module.vpc["main"].vpc_id
   bastion_cidr = var.bastion_cidr
   component = each.value["component"]
@@ -95,9 +96,8 @@ module "app" {
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
   port = each.value["port"]
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
-  dns_domain = var.dns_domain
-  alb = each.value["alb"]
-  alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), alb, null), dns_name, null)
+
+  alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
 }
 
 output "alb" {
