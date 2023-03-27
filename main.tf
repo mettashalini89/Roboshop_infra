@@ -10,7 +10,6 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
-/*
 
 module "docdb" {
   env = var.env
@@ -64,7 +63,6 @@ module "rabbitmq" {
   instance_type = each.value["instance_type"]
 
 }
-*/
 
 module "alb" {
   env = var.env
@@ -102,9 +100,6 @@ module "app" {
   listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
 }
 
-output "alb" {
-  value = module.alb
-}
 
 
 
