@@ -126,6 +126,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
+    listner_priority   = 10
   }
   cart = {
     component = "cart"
@@ -137,6 +138,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
+    listner_priority   = 11
   }
   user = {
     component = "user"
@@ -148,6 +150,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
+    listner_priority   = 12
   }
   shipping = {
     component = "shipping"
@@ -159,6 +162,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
+    listner_priority   = 13
   }
   payment = {
     component = "payment"
@@ -170,6 +174,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
+    listner_priority   = 14
   }
   frontend = {
     component = "frontend"
@@ -181,6 +186,7 @@ apps = {
     port               = 80
     allow_app_to       = "public"
     alb                = "public"
+    listner_priority   = 10
   }
 }
 

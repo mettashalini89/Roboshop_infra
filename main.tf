@@ -90,6 +90,7 @@ module "app" {
   bastion_cidr = var.bastion_cidr
   component = each.value["component"]
   instance_type = each.value["instance_type"]
+  listner_priority   = each.value["listner_priority"]
   desired_capacity = each.value["desired_capacity"]
   max_size = each.value["max_size"]
   min_size = each.value["min_size"]
@@ -98,6 +99,7 @@ module "app" {
   alb = each.value["alb"]
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
+  listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
 }
 
 output "alb" {
