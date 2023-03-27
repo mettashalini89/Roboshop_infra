@@ -67,6 +67,7 @@ docdb = {
     engine_version ="4.0.0"
     no_of_instances = 1
     instance_class = "db.t3.medium"
+    allow_subnets  = "app"
   }
 }
 
