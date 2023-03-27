@@ -102,7 +102,9 @@ module "app" {
   listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
 }
 
-
+output "elasticahe" {
+  value = module.elasticache
+}
 
 
 
