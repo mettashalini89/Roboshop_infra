@@ -169,7 +169,7 @@ apps = {
     allow_app_to       = "app"
     alb                = "private"
     listner_priority   = 13
-    parameters         = []
+    parameters         = ["rds"]
   }
   payment = {
     component = "payment"
