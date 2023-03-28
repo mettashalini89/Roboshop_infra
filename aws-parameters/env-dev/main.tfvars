@@ -18,7 +18,7 @@ parameters = [
   { name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.devopsb71.live:27017/users", type = "String" },
   { name = "dev.cart.redis_host", value = "redis-dev.devopsb71.live", type = "String" },
   { name = "dev.cart.catalogue_host", value = "catalogue-dev.devopsb71.live", type = "String" },
-  { name = "dev.cart.catalogue_port", value = "8080", type = "String" },
+  { name = "dev.cart.catalogue_port", value = "80", type = "String" },
   { name = "dev.dispatch.amqp_host", value = "rabbitmq-dev.devopsb71.live", type = "String" }
 ]
 
