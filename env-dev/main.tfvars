@@ -183,7 +183,7 @@ apps = {
     allow_app_to       = "app"
     alb                = "private"
     listner_priority   = 14
-    parameters         = []
+    parameters         = ["rabbitmq"]
   }
   frontend = {
     component = "frontend"
