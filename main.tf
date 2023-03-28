@@ -48,10 +48,12 @@ module "elasticache" {
   subnet_ids = local.db_subnet_ids
   for_each = var.elasticache
   tags = var.tags
+  vpc_id = module.vpc["main"].vpc_id
   engine = each.value["engine"]
   engine_version = each.value["engine_version"]
   num_cache_nodes = each.value["num_cache_nodes"]
   node_type = each.value["node_type"]
+  allow_subnets  = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 
 }
 
@@ -81,6 +83,7 @@ module "alb" {
 }
 
 module "app" {
+  depends_on = [module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
   env = var.env
   source = "git::https://github.com/mettashalini89/tf_module_app.git"
   for_each = var.apps
@@ -98,7 +101,7 @@ module "app" {
   port = each.value["port"]
   alb = each.value["alb"]
   parameters = each.value["parameters"]
-allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
+  allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
   listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
 }
