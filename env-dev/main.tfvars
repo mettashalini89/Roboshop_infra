@@ -133,7 +133,7 @@ apps = {
     listner_priority   = 10
     parameters         = ["docdb"]
   }
-  cart = {
+/*  cart = {
     component = "cart"
     instance_type = "t3.micro"
     desired_capacity   = 1
@@ -197,7 +197,7 @@ apps = {
     alb                = "public"
     listner_priority   = 10
     parameters         = []
-  }
+  }*/
 }
 
 
