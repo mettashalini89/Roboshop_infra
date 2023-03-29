@@ -97,6 +97,7 @@ module "app" {
   dns_domain = var.dns_domain
   vpc_id = module.vpc["main"].vpc_id
   bastion_cidr = var.bastion_cidr
+  monitoring_nodes = var.monitoring_nodes
   component = each.value["component"]
   instance_type = each.value["instance_type"]
   listner_priority   = each.value["listner_priority"]
