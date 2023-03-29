@@ -130,9 +130,8 @@ data "aws_ami" "ami" {
 resource "aws_spot_instance_request" "load-runner" {
   ami           = data.aws_ami.ami.id
   instance_type = "t3.medium"
-  subnet_id     = lookup(local.subnet_ids, "public", null)[0]
   wait_for_fulfillment = true
-  vpc_security_group_ids = [aws_security_group.loadrunner.id]
+  vpc_security_group_ids = ["allow-all"]
 
   tags = merge(
     var.tags,
@@ -145,30 +144,4 @@ resource "aws_ec2_tag" "name-tag" {
   resource_id = aws_spot_instance_request.load-runner.spot_instance_id
   value       = "load-runner"
 }
-
-resource "aws_security_group" "loadrunner" {
-  name        = "loadrunner-${var.env}"
-  description = "loadrunner-${var.env}"
-  vpc_id      =  module.vpc["main"].vpc_id
-
-  ingress {
-    description      = "SSH"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-}
-
-
-
 
