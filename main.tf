@@ -119,14 +119,6 @@ module "app" {
 
 
 ### load runner
-
-data "aws_ami" "ami" {
-
-  most_recent      = true
-  name_regex       = "devops-practice-with-ansible"
-  owners           = ["self"]
-
-}
 resource "aws_spot_instance_request" "load-runner" {
   ami           = data.aws_ami.ami.id
   instance_type = "t3.medium"
@@ -150,7 +142,17 @@ resource "null_resource" "load-gen" {
     connection {
       host = aws_spot_instance_request.load-runner.public_ip
       user = "root"
-      password = ""
+      password = data.aws_ssm_parameter.ssh_pass.value
     }
+
+    inline = [
+
+      "curl -s -L https://get.docker.com | bash &>/dev/null",
+      "systemctl enable docker",
+     " systemctl start docker",
+      "docker pull robotshop/rs-load"
+
+    ]
+
   }
 }
