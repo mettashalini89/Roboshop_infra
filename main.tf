@@ -100,7 +100,7 @@ module "app" {
   monitoring_nodes = var.monitoring_nodes
   component = each.value["component"]
   instance_type = each.value["instance_type"]
-  listner_priority   = each.value["listner_priority"]
+  listener_priority   = each.value["listener_priority"]
   desired_capacity = each.value["desired_capacity"]
   max_size = each.value["max_size"]
   min_size = each.value["min_size"]
@@ -110,7 +110,7 @@ module "app" {
   parameters = each.value["parameters"]
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
-  listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
+  listener_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listener", null), "arn", null)
 }
 
 /*output "elasticahe" {
@@ -149,7 +149,7 @@ resource "null_resource" "load-gen" {
 
       "curl -s -L https://get.docker.com | bash &>/dev/null",
       "systemctl enable docker",
-     " systemctl start docker",
+      "systemctl start docker",
       "docker pull robotshop/rs-load"
 
     ]
