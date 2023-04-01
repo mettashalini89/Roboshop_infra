@@ -131,7 +131,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
-    listener_priority   = 10
+    listner_priority   = 10
     parameters         = ["docdb"]
   }
   cart = {
@@ -144,7 +144,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
-    listener_priority   = 11
+    listner_priority   = 11
     parameters         = ["elasticache"]
   }
   user = {
@@ -157,7 +157,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
-    listener_priority   = 12
+    listner_priority   = 12
     parameters         = ["docdb", "elasticache"]
   }
   shipping = {
@@ -170,7 +170,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
-    listener_priority   = 13
+    listner_priority   = 13
     parameters         = ["rds"]
   }
   payment = {
@@ -183,7 +183,7 @@ apps = {
     port               = 8080
     allow_app_to       = "app"
     alb                = "private"
-    listener_priority   = 14
+    listner_priority   = 14
     parameters         = ["rabbitmq"]
   }
   frontend = {
@@ -196,7 +196,7 @@ apps = {
     port               = 80
     allow_app_to       = "public"
     alb                = "public"
-    listener_priority   = 10
+    listner_priority   = 10
     parameters         = []
   }
 }
