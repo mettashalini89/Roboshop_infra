@@ -100,7 +100,7 @@ module "app" {
   monitoring_nodes = var.monitoring_nodes
   component = each.value["component"]
   instance_type = each.value["instance_type"]
-  listener_priority   = each.value["listner_priority"]
+  listner_priority   = each.value["listner_priority"]
   desired_capacity = each.value["desired_capacity"]
   max_size = each.value["max_size"]
   min_size = each.value["min_size"]
@@ -110,7 +110,7 @@ module "app" {
   parameters = each.value["parameters"]
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
-  listener_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
+  listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
 }
 
 /*output "elasticahe" {
