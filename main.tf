@@ -87,9 +87,9 @@ module "alb" {
   load_balancer_type = each.value["load_balancer_type"]
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null )
 }
-/*
+
 module "app" {
-  depends_on = [module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
+  //depends_on = [module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
   env = var.env
   source = "git::https://github.com/mettashalini89/tf_module_app.git"
   for_each = var.apps
@@ -111,7 +111,7 @@ module "app" {
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
   listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
-}*/
+}
 
 /*output "elasticahe" {
   value = module.elasticache
