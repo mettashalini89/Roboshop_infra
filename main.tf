@@ -117,8 +117,9 @@ module "app" {
   value = module.elasticache
 }*/
 
+/*
 
-/*### load runner
+### load runner
 resource "aws_spot_instance_request" "load-runner" {
   ami           = data.aws_ami.ami.id
   instance_type = "t3.medium"
@@ -157,5 +158,6 @@ resource "null_resource" "load-gen" {
 
     ]
 
-  }*/
-}
+  }
+}*/
+
