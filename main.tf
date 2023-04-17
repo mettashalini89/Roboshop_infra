@@ -11,7 +11,7 @@ module "vpc" {
 }
 
 
-module "docdb" {
+/*module "docdb" {
   env = var.env
   source = "git::https://github.com/mettashalini89/tf_module_docdb.git"
   for_each = var.docdb
@@ -72,7 +72,7 @@ module "rabbitmq" {
   instance_type = each.value["instance_type"]
   allow_subnets  = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 
-}
+}*/
 
 module "alb" {
   env = var.env
@@ -87,7 +87,7 @@ module "alb" {
   load_balancer_type = each.value["load_balancer_type"]
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null )
 }
-
+/*
 module "app" {
   depends_on = [module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
   env = var.env
@@ -111,14 +111,14 @@ module "app" {
   allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null)
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
   listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
-}
+}*/
 
 /*output "elasticahe" {
   value = module.elasticache
 }*/
 
 
-### load runner
+/*### load runner
 resource "aws_spot_instance_request" "load-runner" {
   ami           = data.aws_ami.ami.id
   instance_type = "t3.medium"
@@ -157,5 +157,5 @@ resource "null_resource" "load-gen" {
 
     ]
 
-  }
+  }*/
 }
