@@ -19,7 +19,13 @@ parameters = [
   { name = "prod.cart.redis_host", value = "redis-prod.devopsb71.live", type = "String" },
   { name = "prod.cart.catalogue_host", value = "catalogue-prod.devopsb71.live", type = "String" },
   { name = "prod.cart.catalogue_port", value = "80", type = "String" },
-  { name = "prod.dispatch.amqp_host", value = "rabbitmq-prod.devopsb71.live", type = "String" }
+  { name = "prod.dispatch.amqp_host", value = "rabbitmq-prod.devopsb71.live", type = "String" },
+  { name = "prod.frontend.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.cart.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.catalogue.app_version", value = "1.0.0", type = "String" },
+  { name = "prod.user.app_version", value = "1.0.1", type = "String" },
+  { name = "prod.shipping.app_version", value = "1.0.1", type = "String" },
+  { name = "prod.payment.app_version", value = "1.0.0", type = "String" }
 ]
 
 ## This is not best practice and not followed in companies, passwords should not keep in git repos and manual is best practice
