@@ -89,7 +89,7 @@ module "alb" {
 }
 
 module "app" {
-  depends_on = [module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
+  depends_on = [module.vpc,module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
   env = var.env
   source = "git::https://github.com/mettashalini89/tf_module_app.git"
   for_each = var.apps
