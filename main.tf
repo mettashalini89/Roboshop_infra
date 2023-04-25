@@ -114,7 +114,6 @@ module "app" {
 }
 
 
-/*
 
 ### load runner
 resource "aws_spot_instance_request" "load-runner" {
@@ -156,5 +155,5 @@ resource "null_resource" "load-gen" {
     ]
 
   }
-}*/
+}
 
