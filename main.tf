@@ -60,6 +60,7 @@ module "elasticache" {
 }
 
 module "rabbitmq" {
+  depends_on = [module.vpc]
   env = var.env
   source = "git::https://github.com/mettashalini89/tf_module_rabbitmq.git"
   subnet_ids = local.db_subnet_ids
