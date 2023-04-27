@@ -188,7 +188,7 @@ apps = {
   }
   frontend = {
     component = "frontend"
-    instance_type = "t3.micro"
+    instance_type = "t3.small"
     desired_capacity   = 2
     max_size           = 10
     min_size           = 2
