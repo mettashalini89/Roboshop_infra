@@ -74,7 +74,7 @@ module "rabbitmq" {
   instance_type = each.value["instance_type"]
   allow_subnets  = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 
-}
+}*/
 
 module "alb" {
   env = var.env
@@ -90,6 +90,7 @@ module "alb" {
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null )
 }
 
+/*
 module "app" {
   depends_on = [module.vpc,module.alb, module.docdb, module.elasticache, module.rabbitmq, module.rds]
   env = var.env
@@ -114,9 +115,10 @@ module "app" {
   alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "alb", null), "dns_name", null)
   listner_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null ), "listner", null), "arn", null)
 }
+*/
 
 
-
+/*
 ### load runner
 resource "aws_spot_instance_request" "load-runner" {
   ami           = data.aws_ami.ami.id
