@@ -10,7 +10,7 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
-/*
+
 
 module "docdb" {
   env = var.env
@@ -74,7 +74,7 @@ module "rabbitmq" {
   instance_type = each.value["instance_type"]
   allow_subnets  = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 
-}*/
+}
 
 module "alb" {
   env = var.env
